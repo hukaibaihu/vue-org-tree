@@ -1,18 +1,29 @@
 <template>
-  <div class="org-tree-container" :class="{vertical}">
-    <slot :data="data">
-      <org-tree-node :data="data" :props="props" @on-node-click="$emit('on-node-click', $event)"></org-tree-node>
-    </slot>
+  <div class="org-tree" :class="{horizontal, collapsable}">
+    <org-tree-node
+      :data="data"
+      :props="props"
+      :horizontal="horizontal"
+      :label-width="labelWidth"
+      :collapsable="collapsable"
+      :render-content="renderContent"
+      :label-class-name="labelClassName"
+      @on-expand="$emit('on-expand', $event)"
+      @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
+    ></org-tree-node>
   </div>
 </template>
 
 <script>
-import OrgTreeNode from './org-tree-node'
+import render from './node'
 
 export default {
   name: 'OrgTree',
   components: {
-    OrgTreeNode
+    OrgTreeNode: {
+      render,
+      functional: true
+    }
   },
   props: {
     data: {
@@ -22,12 +33,16 @@ export default {
     props: {
       type: Object,
       default: () => ({
-        id: 'id',
         label: 'label',
+        expand: 'expand',
         children: 'children'
       })
     },
-    vertical: Boolean
+    horizontal: Boolean,
+    collapsable: Boolean,
+    renderContent: Function,
+    labelWidth: [String, Number],
+    labelClassName: [Function, String]
   }
 }
 </script>

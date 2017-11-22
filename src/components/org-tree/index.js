@@ -1,7 +1,6 @@
 import OrgTree from './org-tree'
-import OrgTreeNode from './org-tree-node'
 
-const install = (Vue) => {
+const install = Vue => {
   if (install.installed) {
     return
   }
@@ -9,16 +8,12 @@ const install = (Vue) => {
   install.installed = true
 
   Vue.component(OrgTree.name, OrgTree)
-  Vue.component(OrgTreeNode.name, OrgTreeNode)
 }
 
-export {
-  OrgTree,
-  OrgTreeNode
+OrgTree.install = install
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(OrgTree)
 }
 
-export default {
-  OrgTree,
-  OrgTreeNode,
-  install
-}
+export default OrgTree

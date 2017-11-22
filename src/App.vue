@@ -1,26 +1,30 @@
 <template>
-  <div id="app" style="padding:100px;text-align:center;">
-    <org-tree :data="orgData" :vertical="true" @on-node-click="onNodeClick">
-      <!-- <org-tree-node :data="orgData" @on-node-click="onNodeClick">
-        <org-tree-node v-if="orgData.children" v-for="child in orgData.children" :data="child" @on-node-click="onNodeClick" :key="child.id"></org-tree-node>
-      </org-tree-node> -->
+  <div id="app" style="padding:50px;text-align:center;">
+    <org-tree
+      :data="data"
+      :horizontal="horizontal"
+      :collapsable="collapsable"
+      :label-class-name="labelClassName"
+      :render-content="renderContent"
+      @on-expand="onExpand"
+      @on-node-click="onNodeClick"
+    >
     </org-tree>
   </div>
 </template>
 
 <script>
-import {OrgTree, OrgTreeNode} from './components/org-tree'
+import OrgTree from './components/org-tree'
 
 export default {
   name: 'app',
   components: {
-    OrgTree,
-    OrgTreeNode
+    OrgTree
   },
   data () {
     return {
-      orgData: {
-        id: 1,
+      data: {
+        id: 0,
         label: '企易购科技有限公司',
         children: [{
           id: 2,
@@ -31,6 +35,12 @@ export default {
           }, {
             id: 6,
             label: '研发-后端'
+          }, {
+            id: 9,
+            label: 'UI设计'
+          }, {
+            id: 10,
+            label: '产品经理'
           }]
         }, {
           id: 3,
@@ -49,12 +59,40 @@ export default {
           id: 9,
           label: 'HR人事'
         }]
-      }
+      },
+      horizontal: false,
+      collapsable: true
     }
   },
   methods: {
-    onNodeClick (node) {
-      console.log(node)
+    labelClassName (data) {
+      return ''
+    },
+    renderContent (h, data) {
+      return data.label
+    },
+    onExpand (data) {
+      if ('expand' in data) {
+        data.expand = !data.expand
+
+        if (!data.expand && data.children) {
+          this.collapse(data.children)
+        }
+      } else {
+        this.$set(data, 'expand', true)
+      }
+    },
+    onNodeClick (...args) {
+      console.log(args)
+    },
+    collapse (list) {
+      list.forEach(child => {
+        if (child.expand) {
+          child.expand = false
+        }
+
+        child.children && this.collapse(child.children)
+      })
     }
   }
 }
