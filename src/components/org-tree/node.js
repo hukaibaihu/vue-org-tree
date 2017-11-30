@@ -26,7 +26,11 @@ export const renderNode = (h, data, context) => {
     domProps: {
       className: cls.join(' ')
     }
-  }, childNodes)
+  }, [h('div', {
+    domProps: {
+      className: 'org-tree-node-inner'
+    }
+  }, childNodes)])
 }
 
 // 创建展开折叠按钮
@@ -86,12 +90,16 @@ export const renderLabel = (h, data, context) => {
   return h('div', {
     domProps: {
       className: cls.join(' ')
+    }
+  }, [h('div', {
+    domProps: {
+      className: 'org-tree-node-label-inner'
     },
     style: {width: labelWidth},
     on: {
       click: e => clickHandler && clickHandler(e, data)
     }
-  }, childNodes)
+  }, childNodes)])
 }
 
 // 创建 node 子节点

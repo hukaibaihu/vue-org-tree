@@ -1,16 +1,18 @@
 <template>
-  <div class="org-tree" :class="{horizontal, collapsable}">
-    <org-tree-node
-      :data="data"
-      :props="props"
-      :horizontal="horizontal"
-      :label-width="labelWidth"
-      :collapsable="collapsable"
-      :render-content="renderContent"
-      :label-class-name="labelClassName"
-      @on-expand="$emit('on-expand', $event)"
-      @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
-    ></org-tree-node>
+  <div class="org-tree-container">
+    <div class="org-tree" :class="{horizontal, collapsable}">
+      <org-tree-node
+        :data="data"
+        :props="props"
+        :horizontal="horizontal"
+        :label-width="labelWidth"
+        :collapsable="collapsable"
+        :render-content="renderContent"
+        :label-class-name="labelClassName"
+        @on-expand="$emit('on-expand', $event)"
+        @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
+      ></org-tree-node>
+    </div>
   </div>
 </template>
 

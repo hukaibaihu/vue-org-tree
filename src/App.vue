@@ -28,7 +28,7 @@ export default {
         label: '企易购科技有限公司',
         children: [{
           id: 2,
-          label: '研发部',
+          label: '产品研发部',
           children: [{
             id: 5,
             label: '研发-前端'
@@ -60,7 +60,7 @@ export default {
           label: 'HR人事'
         }]
       },
-      horizontal: false,
+      horizontal: true,
       collapsable: true
     }
   },
