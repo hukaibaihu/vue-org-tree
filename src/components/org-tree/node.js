@@ -26,11 +26,7 @@ export const renderNode = (h, data, context) => {
     domProps: {
       className: cls.join(' ')
     }
-  }, [h('div', {
-    domProps: {
-      className: 'org-tree-node-inner'
-    }
-  }, childNodes)])
+  }, childNodes)
 }
 
 // 创建展开折叠按钮
