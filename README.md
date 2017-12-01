@@ -7,14 +7,14 @@
   * #### props
 
 
-     prop      |     descripton               |  type                  |       default
--------------- | ---------------------------- |:---------------------: | --------------------
-data           |                              | `Object`               | 
-props          |  configure props             | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
-labelWidth     |  node label width            | `String` \| `Number`.  | `auto` 
-collapsable    | children node is collapsable | `Boolean`              | `true`
-renderContent  | how to render node label     | `Function`             |     -
-labelClassName | node label class             | `Function` \| `String` |     -
+	prop           | descripton                   | type                   | default
+	---------------|------------------------------|:----------------------:|---------------------
+	data           |                              | `Object`               | 
+	props          |  configure props             | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
+	labelWidth     |  node label width            | `String` \| `Number`.  | `auto` 
+	collapsable    | children node is collapsable | `Boolean`              | `true`
+	renderContent  | how to render node label     | `Function`             |     -
+	labelClassName | node label class             | `Function` \| `String` |     -
 
 
   * ### events
@@ -34,17 +34,19 @@ labelClassName | node label class             | `Function` \| `String` |     -
 
 - default
 
-  ![](./images/default.png)
+  ![default](./images/default.png)
 
 - horizontal
 
-  ![](./images/horizontal.png)
+  ![horizontal](./images/horizontal.png)
 
 ## Browser support
 
     use table layout!
 
 > IE9+、Chrome、Firefox、Opera
+
+
 
 ## Build Setup
 
