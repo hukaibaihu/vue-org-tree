@@ -25,7 +25,7 @@ export default {
     return {
       data: {
         id: 0,
-        label: '企易购科技有限公司',
+        label: 'XXX科技有限公司',
         children: [{
           id: 2,
           label: '产品研发部',

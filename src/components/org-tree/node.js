@@ -73,7 +73,7 @@ export const renderLabel = (h, data, context) => {
     childNodes.push(renderBtn(h, data, context))
   }
 
-  const cls = ['org-tree-node-label']
+  const cls = ['org-tree-node-label-inner']
   let {labelWidth, labelClassName} = props
   if (typeof labelWidth === 'number') {
     labelWidth += 'px'
@@ -85,11 +85,11 @@ export const renderLabel = (h, data, context) => {
 
   return h('div', {
     domProps: {
-      className: cls.join(' ')
+      className: 'org-tree-node-label'
     }
   }, [h('div', {
     domProps: {
-      className: 'org-tree-node-label-inner'
+      className: cls.join(' ')
     },
     style: {width: labelWidth},
     on: {
