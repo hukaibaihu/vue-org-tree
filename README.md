@@ -2,6 +2,27 @@
 
 > A simple organization tree chart based on Vue2.x
 
+## Usage
+
+```
+# use npm
+npm i vue2-org-tree
+
+# use yarn
+yarn add vue2-org-tree
+```
+### Import Plugins
+
+``` js
+import Vue from 'vue'
+import Vue2OrgTree from 'vue2-org-tree'
+
+Vue.use(Vue2OrgTree)
+
+// ...
+```
+
+
 ## API
 
   * #### props
@@ -9,9 +30,9 @@
 
 	prop           | descripton                   | type                   | default
 	---------------|------------------------------|:----------------------:|---------------------
-	data           |                              | `Object`               | 
+	data           |                              | `Object`               |
 	props          |  configure props             | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
-	labelWidth     |  node label width            | `String` \| `Number`.  | `auto` 
+	labelWidth     |  node label width            | `String` \| `Number`.  | `auto`
 	collapsable    | children node is collapsable | `Boolean`              | `true`
 	renderContent  | how to render node label     | `Function`             |     -
 	labelClassName | node label class             | `Function` \| `String` |     -
@@ -20,12 +41,12 @@
   * ### events
 
     - on-expand
-       
+
       well be called when the collapse-btn clicked
-       
+
 
     - on-node-click
-  
+
       well be called when the node-label clicked
 
 
@@ -46,19 +67,5 @@
 
 > IE9+、Chrome、Firefox、Opera
 
-
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+[MIT](http://opensource.org/licenses/MIT)

@@ -20,7 +20,7 @@
 import render from './node'
 
 export default {
-  name: 'OrgTree',
+  name: 'Vue2OrgTree',
   components: {
     OrgTreeNode: {
       render,

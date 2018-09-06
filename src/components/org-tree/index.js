@@ -10,10 +10,11 @@ const install = Vue => {
   Vue.component(OrgTree.name, OrgTree)
 }
 
-OrgTree.install = install
-
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(OrgTree)
 }
 
-export default OrgTree
+export default {
+  install,
+  name: 'vue2-org-tree'
+}

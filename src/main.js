@@ -1,7 +1,3 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue2OrgTree from './components/org-tree'
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+export default Vue2OrgTree
