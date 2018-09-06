@@ -6,7 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'index.js'
+    filename: 'index.js',
+    library: 'vue2-org-tree',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
