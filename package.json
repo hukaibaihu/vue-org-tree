@@ -1,11 +1,10 @@
 {
   "name": "vue2-org-tree",
   "description": "A simple organization tree chart based on Vue2.x",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "author": "steven <986535362@qq.com>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
@@ -18,9 +17,7 @@
     "url": "https://github.com/hukaibaihu/vue-org-tree/issues"
   },
   "homepage": "https://hukaibaihu.github.io/vue-org-tree/",
-  "dependencies": {
-    "vue": "^2.4.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
