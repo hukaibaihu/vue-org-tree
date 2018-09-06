@@ -42,7 +42,7 @@
       </div>
       <p><br></p>
       <div class="text-center">
-        <org-tree
+        <vue2-org-tree
           :data="data"
           :horizontal="horizontal"
           :collapsable="collapsable"
