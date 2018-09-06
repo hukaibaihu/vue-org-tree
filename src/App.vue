@@ -50,21 +50,16 @@
           :render-content="renderContent"
           @on-expand="onExpand"
           @on-node-click="onNodeClick"
-        >
-        </org-tree>
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import OrgTree from './components/org-tree'
 
 export default {
   name: 'app',
-  components: {
-    OrgTree
-  },
   data () {
     return {
       data: {

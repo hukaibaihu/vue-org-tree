@@ -4283,6 +4283,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue2-org-tree@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/vue2-org-tree/download/vue2-org-tree-1.0.1.tgz#30579cf3666492891eb7e6c8a18d3cee2807db48"
+
 vue@^2.4.4:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.7.tgz#313ab26025915d9fdbc39db756548cb4bb50eb44"
