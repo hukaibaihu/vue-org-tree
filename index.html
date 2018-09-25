@@ -4,17 +4,10 @@
     <meta charset="utf-8">
     <title>vue-org-tree</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/malihu-custom-scrollbar-plugin@3.1.5/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue2-org-tree@1.1.0/dist/style.css">
     <style type="text/css">
-    .org-tree-node {
-      display: table-cell;
-      vertical-align: top;
-    }
-    .org-tree-node:not(:only-child) {
-      float: none;
-    }
-    .org-tree-node-children {
-      display: table;
+    .org-tree-node-label {
+      white-space: nowrap;
     }
     .bg-white {
       background-color: white;
@@ -82,7 +75,7 @@
           </div>
         </div>
         <p><br></p>
-        <div class="mCustomScrollbar text-center">
+        <div class="text-center">
           <vue2-org-tree
             :data="data"
             :horizontal="horizontal"
@@ -95,19 +88,9 @@
         </div>
       </div>
     </div>
-    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/malihu-custom-scrollbar-plugin@3.1.5/jquery.mCustomScrollbar.js"></script>
     <script src="https://unpkg.com/vue@2.5.7/dist/vue.js"></script>
-    <script src="./dist/index.js"></script>
+    <script src="https://unpkg.com/vue2-org-tree@1.1.0/dist/index.js"></script>
     <script type="text/javascript">
-      $('.mCustomScrollbar').mCustomScrollbar({
-        axis: 'x',
-        // documentTouchScroll: true,
-        // advanced: {
-        //   updateOnContentResize: true,
-        //   autoExpandHorizontalScroll: true
-        // }
-      });
       var vm = new Vue({
         el: '#app',
         data: {
