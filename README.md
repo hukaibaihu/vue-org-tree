@@ -4,6 +4,8 @@
 
 ## Usage
 
+### NPM
+
 ```
 # use npm
 npm i vue2-org-tree
@@ -20,6 +22,21 @@ import Vue2OrgTree from 'vue2-org-tree'
 Vue.use(Vue2OrgTree)
 
 // ...
+```
+
+### CDN
+
+``` html
+# css
+<link href="https://unpkg.com/vue2-org-tree@1.1.0/dist/style.css">
+
+<!--
+...
+-->
+
+# js
+<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+<script src="https://unpkg.com/vue2-org-tree@1.1.0/dist/index.js"></script>
 ```
 
 
@@ -66,6 +83,13 @@ Vue.use(Vue2OrgTree)
     use table layout!
 
 > IE9+、Chrome、Firefox、Opera
+
+## Change log
+
+  - 1.1.0
+
+    * Extract CSS
+    * Fixed unable to use in browser [#9](https://github.com/hukaibaihu/vue-org-tree/issues/9)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)

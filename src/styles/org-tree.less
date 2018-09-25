@@ -89,10 +89,8 @@
 }
 .org-tree-node {
   padding-top: 20px;
-
-  &:not(:only-child) {
-    float: left;
-  }
+  display: table-cell;
+  vertical-align: top;
 
   &.is-leaf, &.collapsed {
     padding-left: 10px;
@@ -141,6 +139,7 @@
 }
 .org-tree-node-children {
   padding-top: 20px;
+  display: table;
 
   &:before {
     content: '';
