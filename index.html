@@ -154,12 +154,13 @@
             alert(data.label)
           },
           collapse: function(list) {
+            var _this = this
             list.forEach(function(child) {
               if (child.expand) {
                 child.expand = false
               }
 
-              child.children && this.collapse(child.children)
+              child.children && _this.collapse(child.children)
             })
           }
         }
