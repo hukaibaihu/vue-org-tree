@@ -41,20 +41,29 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal row">
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" v-model="horizontal" > horizontal
+                    <input type="checkbox" v-model="horizontal" > Horizontal
                   </label>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" v-model="collapsable"> collapsable
+                    <input type="checkbox" v-model="collapsable"> Collapsable
                   </label>
                 </div>
               </div>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" v-model="expandAll" @change="expandChange"> Expand All
+                  </label>
+                </div>
+              </div>
+              <p><br></p>
+              <p><br></p>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label col-md-5">labelClassName:</label>
@@ -133,6 +142,7 @@
           },
           horizontal: false,
           collapsable: true,
+          expandAll: false,
           labelClassName: 'bg-white'
         },
         methods: {
@@ -162,6 +172,25 @@
 
               child.children && _this.collapse(child.children)
             })
+          },
+          expandChange: function() {
+            this.toggleExpand(this.data, this.expandAll)
+          },
+          toggleExpand: function(data, val) {
+            var _this = this
+            if (Array.isArray(data)) {
+              data.forEach(function(item){
+                _this.$set(item, 'expand', val)
+                if (item.children) {
+                  _this.toggleExpand(item.children, val)
+                }
+              })
+            } else {
+              this.$set(data, 'expand', val)
+              if (data.children) {
+                _this.toggleExpand(data.children, val)
+              }
+            }
           }
         }
       })
