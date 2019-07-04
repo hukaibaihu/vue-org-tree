@@ -47,7 +47,7 @@ export const renderBtn = (h, data, context) => {
     on: {
       click: e => {
         e.stopPropagation()
-        expandHandler && expandHandler(data)
+        expandHandler && expandHandler(data,$event)
       }
     }
   })
