@@ -9,7 +9,7 @@
         :collapsable="collapsable"
         :render-content="renderContent"
         :label-class-name="labelClassName"
-        @on-expand="$emit('on-expand', $event)"
+        @on-expand="(e,data) => {$emit('on-expand', e,data)}"
         @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
       ></org-tree-node>
     </div>
