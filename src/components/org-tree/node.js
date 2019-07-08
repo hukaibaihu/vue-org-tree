@@ -46,8 +46,8 @@ export const renderBtn = (h, data, context) => {
     },
     on: {
       click: e => {
-        e.stopPropagation()
-        expandHandler && expandHandler(data)
+        //e.stopPropagation()
+        expandHandler && expandHandler(e,data)
       }
     }
   })
@@ -74,7 +74,7 @@ export const renderLabel = (h, data, context) => {
   }
 
   const cls = ['org-tree-node-label-inner']
-  let {labelWidth, labelClassName} = props
+  let {labelWidth, labelClassName, selectedClassName,selectedKey} = props
   if (typeof labelWidth === 'number') {
     labelWidth += 'px'
   }
@@ -82,6 +82,11 @@ export const renderLabel = (h, data, context) => {
     labelClassName = labelClassName(data)
   }
   labelClassName && cls.push(labelClassName)
+  //add selected class and key from props
+  if (typeof selectedClassName === 'function') {
+    selectedClassName = selectedClassName(data)
+  }
+  selectedClassName && selectedKey && data[selectedKey] && cls.push(selectedClassName)
 
   return h('div', {
     domProps: {
