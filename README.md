@@ -45,24 +45,32 @@ Vue.use(Vue2OrgTree)
   * #### props
 
 
-	prop           | descripton                   | type                   | default
-	---------------|------------------------------|:----------------------:|---------------------
-	data           |                              | `Object`               |
-	props          |  configure props             | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
-	labelWidth     |  node label width            | `String` \| `Number`.  | `auto`
-	collapsable    | children node is collapsable | `Boolean`              | `true`
-	renderContent  | how to render node label     | `Function`             |     -
-	labelClassName | node label class             | `Function` \| `String` |     -
+	prop              | descripton                     | type                   | default
+	------------------|--------------------------------|:----------------------:|---------------------
+	data              |                                | `Object`               |
+	props             |  configure props               | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
+	labelWidth        |  node label width              | `String` \| `Number`.  | `auto`
+	collapsable       | children node is collapsable   | `Boolean`              | `true`
+	renderContent     | how to render node label       | `Function`             |     -
+	labelClassName    | node label class               | `Function` \| `String` |     -
+  selectedKey       | The key of the selected node   | `String`               |     -
+  selectedClassName | The className of the selected node | `Function` \| `String` |     -
 
 
   * ### events
 
-    - on-expand
+    - on-expand `callback function`
+
+      - params `e` `Event`
+      - params `data` `Current node data`
 
       well be called when the collapse-btn clicked
 
 
-    - on-node-click
+    - on-node-click `callback function`
+
+      - params `e` `Event`
+      - params `data` `Current node data`
 
       well be called when the node-label clicked
 
@@ -85,6 +93,14 @@ Vue.use(Vue2OrgTree)
 > IE9+、Chrome、Firefox、Opera
 
 ## Change log
+
+  - 1.2.0
+
+    * Add props: `selectedClassName`, `selectedKey`
+
+  - 1.1.1
+
+    * Fixed bug [#11](https://github.com/hukaibaihu/vue-org-tree/issues/9)
 
   - 1.1.0
 
