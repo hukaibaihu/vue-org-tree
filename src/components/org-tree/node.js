@@ -86,7 +86,7 @@ export const renderLabel = (h, data, context) => {
   if (typeof selectedClassName === 'function') {
     selectedClassName = selectedClassName(data)
   }
-  selectedClassName && data[selectedKey] && cls.push(selectedClassName)
+  selectedClassName && selectedKey && data[selectedKey] && cls.push(selectedClassName)
 
   return h('div', {
     domProps: {
