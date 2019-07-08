@@ -9,9 +9,9 @@
         :collapsable="collapsable"
         :render-content="renderContent"
         :label-class-name="labelClassName"
-        @on-expand="(e,data) => {$emit('on-expand', e,data)}"
+        @on-expand="(e, data) => {$emit('on-expand', e, data)}"
         @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
-      ></org-tree-node>
+      />
     </div>
   </div>
 </template>
@@ -41,10 +41,12 @@ export default {
       })
     },
     horizontal: Boolean,
+    selectedKey: String,
     collapsable: Boolean,
     renderContent: Function,
     labelWidth: [String, Number],
-    labelClassName: [Function, String]
+    labelClassName: [Function, String],
+    selectedClassName: [Function, String]
   }
 }
 </script>

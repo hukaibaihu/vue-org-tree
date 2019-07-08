@@ -5,7 +5,7 @@ const isLeaf = (data, prop) => {
 
 // 创建 node 节点
 export const renderNode = (h, data, context) => {
-  const {props} = context
+  const { props } = context
   const cls = ['org-tree-node']
   const childNodes = []
   const children = data[props.props.children]
@@ -30,9 +30,8 @@ export const renderNode = (h, data, context) => {
 }
 
 // 创建展开折叠按钮
-export const renderBtn = (h, data, context) => {
-  const {props} = context
-  const expandHandler = context.listeners['on-expand']
+export const renderBtn = (h, data, { props, listeners }) => {
+  const expandHandler = listeners['on-expand']
 
   let cls = ['org-tree-node-btn']
 
@@ -45,20 +44,17 @@ export const renderBtn = (h, data, context) => {
       className: cls.join(' ')
     },
     on: {
-      click: e => {
-        //e.stopPropagation()
-        expandHandler && expandHandler(e,data)
-      }
+      click: e => expandHandler && expandHandler(e,data)
     }
   })
 }
 
 // 创建 label 节点
 export const renderLabel = (h, data, context) => {
-  const {props} = context
+  const { props, listeners } = context
   const label = data[props.props.label]
   const renderContent = props.renderContent
-  const clickHandler = context.listeners['on-node-click']
+  const clickHandler = listeners['on-node-click']
 
   const childNodes = []
   if (typeof renderContent === 'function') {
@@ -74,18 +70,23 @@ export const renderLabel = (h, data, context) => {
   }
 
   const cls = ['org-tree-node-label-inner']
-  let {labelWidth, labelClassName, selectedClassName,selectedKey} = props
+  let { labelWidth, labelClassName, selectedClassName, selectedKey } = props
+
   if (typeof labelWidth === 'number') {
     labelWidth += 'px'
   }
+
   if (typeof labelClassName === 'function') {
     labelClassName = labelClassName(data)
   }
+
   labelClassName && cls.push(labelClassName)
-  //add selected class and key from props
+
+  // add selected class and key from props
   if (typeof selectedClassName === 'function') {
     selectedClassName = selectedClassName(data)
   }
+
   selectedClassName && selectedKey && data[selectedKey] && cls.push(selectedClassName)
 
   return h('div', {
@@ -96,7 +97,7 @@ export const renderLabel = (h, data, context) => {
     domProps: {
       className: cls.join(' ')
     },
-    style: {width: labelWidth},
+    style: { width: labelWidth },
     on: {
       click: e => clickHandler && clickHandler(e, data)
     }
