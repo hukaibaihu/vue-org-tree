@@ -45,16 +45,17 @@ Vue.use(Vue2OrgTree)
   * #### props
 
 
-	prop              | descripton                         | type                   | default
-	------------------|------------------------------------|:----------------------:|:---------------------:
-	data              |                                    | `Object`               |
-	props             |  configure props                   | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
-	labelWidth        |  node label width                  | `String` \| `Number`.  | `auto`
-	collapsable       | children node is collapsable       | `Boolean`              | `true`
-	renderContent     | how to render node label           | `Function`             |     -
-	labelClassName    | node label class                   | `Function` \| `String` |     -
-  selectedKey       | The key of the selected node       | `String`               |     -
-  selectedClassName | The className of the selected node | `Function` \| `String` |     -
+  prop              | descripton                              | type                   | default
+  ------------------|-----------------------------------------|:----------------------:|:---------------------------------------------------------:
+  data              |                                         | `Object`               |
+  props             |  configure props                        | `Object`               | `{label: 'label', children: 'children', expand: 'expand'}`
+  labelWidth        |  node label width                       | `String` \| `Number`   | `auto`
+  collapsable       |  children node is collapsable           | `Boolean`              | `true`
+  renderContent     |  how to render node label               | `Function`             |     -
+  labelClassName    |  node label class                       | `Function` \| `String` |     -
+  selectedKey       |  The key of the selected node           | `String`               |     -
+  selectedClassName |  The className of the selected node     | `Function` \| `String` |     -
+
 
 
   * ### events

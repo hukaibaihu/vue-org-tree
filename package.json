@@ -1,14 +1,15 @@
 {
   "name": "vue2-org-tree",
   "description": "A simple organization tree chart based on Vue2.x",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/index.js",
   "module": "src/main.js",
   "author": "steven <986535362@qq.com>",
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
