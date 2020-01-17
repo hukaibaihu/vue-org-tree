@@ -59,23 +59,38 @@ Vue.use(Vue2OrgTree)
 
 
   * ### events
+  
+    event name        | descripton                              | type                   
+    ------------------|-----------------------------------------|:----------------------
+    click             |  Click event                            | `Function`            
+    mouseover         |  onMouseOver event                      | `Function`            
+    mouseout          |  onMouseOut event                       | `Function` 
 
-    - on-expand `callback function`
+  * ### Call events
 
-      - params `e` `Event`
-      - params `data` `Current node data`
+#### on-expand
+well be called when the collapse-btn clicked
 
-      well be called when the collapse-btn clicked
+- params `e` `Event`
+- params `data` `Current node data`
 
+#### on-node-click
+well be called when the node-label clicked
 
-    - on-node-click `callback function`
+- params `e` `Event`
+- params `data` `Current node data`     
 
-      - params `e` `Event`
-      - params `data` `Current node data`
+#### on-node-mouseover
+It is called when the mouse hovers over the label.
 
-      well be called when the node-label clicked
+- params `e` `Event`
+- params `data` `Current node data`   
 
+#### on-node-mouseout
+It is called when the mouse leaves the label.
 
+- params `e` `Event`
+- params `data` `Current node data`
 
 ## Example
 
@@ -93,20 +108,10 @@ Vue.use(Vue2OrgTree)
 
 > IE9+、Chrome、Firefox、Opera
 
-## Change log
-
-  - 1.2.0
-
-    * Add props: `selectedClassName`, `selectedKey`
-
-  - 1.1.1
-
-    * Fixed bug [#11](https://github.com/hukaibaihu/vue-org-tree/issues/9)
-
-  - 1.1.0
-
-    * Extract CSS
-    * Fixed unable to use in browser [#9](https://github.com/hukaibaihu/vue-org-tree/issues/9)
-
 ## License
 [MIT](http://opensource.org/licenses/MIT)
+
+## IMPORTANT
+This repository is a fork to add 2 events that was needed to improve the project I needed.
+
+Any issues found, visit the [original repository](https://github.com/hukaibaihu/vue-org-tree) and report the issues.

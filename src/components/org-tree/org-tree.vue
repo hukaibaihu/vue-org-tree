@@ -9,8 +9,11 @@
         :collapsable="collapsable"
         :render-content="renderContent"
         :label-class-name="labelClassName"
-        @on-expand="(e, data) => {$emit('on-expand', e, data)}"
-        @on-node-click="(e, data) => {$emit('on-node-click', e, data)}"
+        @on-expand="(e, data) => $emit('on-expand', e, data)"
+        @on-node-focus="(e, data) => $emit('on-node-focus', e, data)"
+        @on-node-click="(e, data) => $emit('on-node-click', e, data)"
+        @on-node-mouseover="(e, data) => $emit('on-node-mouseover', e, data)"
+        @on-node-mouseout="(e, data) => $emit('on-node-mouseout', e, data)"
       />
     </div>
   </div>

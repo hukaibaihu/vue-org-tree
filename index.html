@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>OrgTree Example</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="dist/index.js"></script>
+  </head>
+<body>
+  <div id="app">
+    <div>
+      <vue2-org-tree
+        :data="tree"
+        :labelWidth="90"
+        :labelClassName="labelClass"
+        :render-content="renderContent"
+        @on-node-click="onNodeClick"
+        @on-node-mouseover="onNodeMouseOver"
+        @on-node-mouseout="onNodeMouseOut"
+      />
+    </div>
+
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: () => ({
+        tree: {
+          label: 'Owner',
+          children: [{
+            label: 'Label 1'
+          },{
+            label: 'Label 2'
+          },{
+            label: 'Label 3'
+          }]
+        }
+      }),
+      methods: {
+        labelClass (data) {
+          return "bg_node";
+        },
+        renderContent (h, data) {
+          return data.label;
+        },
+        onNodeClick (e, data) {
+          console.log('CLICK', e);
+        },
+        onNodeMouseOver(e, data) {
+          alert('MOUSE OVER - ')
+        },
+        onNodeMouseOut(e, data) {
+          console.log('MOUSEOUT', e);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

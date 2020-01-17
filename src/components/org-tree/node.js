@@ -54,7 +54,12 @@ export const renderLabel = (h, data, context) => {
   const { props, listeners } = context
   const label = data[props.props.label]
   const renderContent = props.renderContent
+
+  // event handlers
   const clickHandler = listeners['on-node-click']
+  const mouseOverHandler = listeners['on-node-mouseover']
+  const mouseOutHandler = listeners['on-node-mouseout']
+  const focusHandler = listeners['on-node-focus']
 
   const childNodes = []
   if (typeof renderContent === 'function') {
@@ -99,7 +104,9 @@ export const renderLabel = (h, data, context) => {
     },
     style: { width: labelWidth },
     on: {
-      click: e => clickHandler && clickHandler(e, data)
+      'click': e => clickHandler && clickHandler(e, data),
+      'mouseover': e => mouseOverHandler && mouseOverHandler(e, data),
+      'mouseout': e => mouseOutHandler && mouseOutHandler(e, data)
     }
   }, childNodes)])
 }
@@ -122,6 +129,8 @@ export const renderChildren = (h, list, context) => {
 
 export const render = (h, context) => {
   const {props} = context
+
+  console.log(context.listeners)
   return renderNode(h, props.data, context)
 }
 
