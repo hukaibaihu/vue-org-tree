@@ -59,7 +59,6 @@ export const renderLabel = (h, data, context) => {
   const clickHandler = listeners['on-node-click']
   const mouseOverHandler = listeners['on-node-mouseover']
   const mouseOutHandler = listeners['on-node-mouseout']
-  const focusHandler = listeners['on-node-focus']
 
   const childNodes = []
   if (typeof renderContent === 'function') {
