@@ -19,7 +19,9 @@
     "url": "https://github.com/hukaibaihu/vue-org-tree/issues"
   },
   "homepage": "https://hukaibaihu.github.io/vue-org-tree/",
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
