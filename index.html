@@ -13,9 +13,11 @@
     <div>
       <vue2-org-tree
         :data="tree"
+        collapsable
         :label-width="90"
         :label-class-name="labelClass"
         :render-content="renderContent"
+        @on-expand="onExpand"
         @on-node-click="onNodeClick"
         @on-node-mouseover="onNodeMouseOver"
         @on-node-mouseout="onNodeMouseOut"
@@ -45,6 +47,25 @@
         },
         renderContent (h, data) {
           return data.label;
+        },
+        onExpand (e, data) {
+          if ('expand' in data) {
+            data.expand = !data.expand
+            if (!data.expand && data.children) {
+              this.collapse(data.children)
+            }
+          } else {
+            this.$set(data, 'expand', true)
+          }
+        },
+        collapse (nodes) {
+          nodes.forEach(node => {
+            if (node.expand) {
+              node.expand = false
+            }
+
+            node.children && this.collapse(node.children)
+          })
         },
         onNodeClick (e, data) {
           console.log('CLICK', e);
