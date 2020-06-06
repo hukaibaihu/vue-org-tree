@@ -1,10 +1,27 @@
+const EVENTS = {
+  CLICK: 'on-node-click',
+  MOUSEOUT: 'on-node-mouseout',
+  MOUSEOVER: 'on-node-mouseover'
+}
+
+function createListener (handler, data) {
+  if (typeof handler === 'function') {
+    return function (e) {
+      // fixed bug #48
+      if (e.target.className.indexOf('org-tree-node-btn') > -1) return
+
+      handler.apply(null, [e, data])
+    }
+  }
+}
+
 // 判断是否叶子节点
 const isLeaf = (data, prop) => {
   return !(Array.isArray(data[prop]) && data[prop].length > 0)
 }
 
 // 创建 node 节点
-export const renderNode = (h, data, context) => {
+export function renderNode (h, data, context) {
   const { props } = context
   const cls = ['org-tree-node']
   const childNodes = []
@@ -30,7 +47,7 @@ export const renderNode = (h, data, context) => {
 }
 
 // 创建展开折叠按钮
-export const renderBtn = (h, data, { props, listeners }) => {
+export function renderBtn (h, data, { props, listeners }) {
   const expandHandler = listeners['on-expand']
 
   let cls = ['org-tree-node-btn']
@@ -50,15 +67,15 @@ export const renderBtn = (h, data, { props, listeners }) => {
 }
 
 // 创建 label 节点
-export const renderLabel = (h, data, context) => {
+export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const label = data[props.props.label]
   const renderContent = props.renderContent
 
   // event handlers
-  const clickHandler = listeners['on-node-click']
-  const mouseOverHandler = listeners['on-node-mouseover']
-  const mouseOutHandler = listeners['on-node-mouseout']
+  const clickHandler = listeners[EVENTS.CLICK]
+  const mouseOutHandler = listeners[EVENTS.MOUSEOUT]
+  const mouseOverHandler = listeners[EVENTS.MOUSEOVER]
 
   const childNodes = []
   if (typeof renderContent === 'function') {
@@ -103,15 +120,15 @@ export const renderLabel = (h, data, context) => {
     },
     style: { width: labelWidth },
     on: {
-      'click': e => clickHandler && clickHandler(e, data),
-      'mouseover': e => mouseOverHandler && mouseOverHandler(e, data),
-      'mouseout': e => mouseOutHandler && mouseOutHandler(e, data)
+      'click': createListener(clickHandler, data),
+      'mouseout': createListener(mouseOutHandler, data),
+      'mouseover': createListener(mouseOverHandler, data)
     }
   }, childNodes)])
 }
 
 // 创建 node 子节点
-export const renderChildren = (h, list, context) => {
+export function renderChildren (h, list, context) {
   if (Array.isArray(list) && list.length) {
     const children = list.map(item => {
       return renderNode(h, item, context)
@@ -126,10 +143,9 @@ export const renderChildren = (h, list, context) => {
   return ''
 }
 
-export const render = (h, context) => {
+export function render (h, context) {
   const {props} = context
 
-  console.log(context.listeners)
   return renderNode(h, props.data, context)
 }
 

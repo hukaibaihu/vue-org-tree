@@ -1,6 +1,6 @@
 import OrgTree from './org-tree'
 
-const install = Vue => {
+export function install (Vue) {
   if (install.installed) {
     return
   }

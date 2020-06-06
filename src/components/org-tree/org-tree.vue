@@ -54,6 +54,4 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import '../../styles/org-tree';
-</style>
+<style lang="less" src="../../styles/org-tree.less"></style>

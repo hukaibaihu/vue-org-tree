@@ -13,8 +13,8 @@
     <div>
       <vue2-org-tree
         :data="tree"
-        :labelWidth="90"
-        :labelClassName="labelClass"
+        :label-width="90"
+        :label-class-name="labelClass"
         :render-content="renderContent"
         @on-node-click="onNodeClick"
         @on-node-mouseover="onNodeMouseOver"
@@ -50,10 +50,10 @@
           console.log('CLICK', e);
         },
         onNodeMouseOver(e, data) {
-          alert('MOUSE OVER - ')
+          console.log('MOUSE OVER', e);
         },
         onNodeMouseOut(e, data) {
-          console.log('MOUSEOUT', e);
+          console.log('MOUSE OUT', e);
         }
       }
     })

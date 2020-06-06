@@ -28,22 +28,17 @@ Vue.use(Vue2OrgTree)
 
 ``` html
 # css
-<link href="https://unpkg.com/vue2-org-tree@1.1.0/dist/style.css">
-
-<!--
-...
--->
+<link href="https://unpkg.com/vue2-org-tree/dist/style.css">
 
 # js
-<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
-<script src="https://unpkg.com/vue2-org-tree@1.1.0/dist/index.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue2-org-tree/dist/index.js"></script>
 ```
 
 
 ## API
 
-  * #### props
-
+#### props
 
   prop              | descripton                              | type                   | default
   ------------------|-----------------------------------------|:----------------------:|:---------------------------------------------------------:
@@ -58,15 +53,15 @@ Vue.use(Vue2OrgTree)
 
 
 
-  * ### events
-  
-    event name        | descripton                              | type                   
-    ------------------|-----------------------------------------|:----------------------
-    click             |  Click event                            | `Function`            
-    mouseover         |  onMouseOver event                      | `Function`            
-    mouseout          |  onMouseOut event                       | `Function` 
+### events
 
-  * ### Call events
+  event name        | descripton                              | type
+  ------------------|-----------------------------------------|:----------------------
+  click             |  Click event                            | `Function`
+  mouseover         |  onMouseOver event                      | `Function`
+  mouseout          |  onMouseOut event                       | `Function`
+
+### Call events
 
 #### on-expand
 well be called when the collapse-btn clicked
@@ -78,13 +73,13 @@ well be called when the collapse-btn clicked
 well be called when the node-label clicked
 
 - params `e` `Event`
-- params `data` `Current node data`     
+- params `data` `Current node data`
 
 #### on-node-mouseover
 It is called when the mouse hovers over the label.
 
 - params `e` `Event`
-- params `data` `Current node data`   
+- params `data` `Current node data`
 
 #### on-node-mouseout
 It is called when the mouse leaves the label.
@@ -104,14 +99,9 @@ It is called when the mouse leaves the label.
 
 ## Browser support
 
-    use table layout!
+  use table layout!
 
 > IE9+、Chrome、Firefox、Opera
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
-
-## IMPORTANT
-This repository is a fork to add 2 events that was needed to improve the project I needed.
-
-Any issues found, visit the [original repository](https://github.com/hukaibaihu/vue-org-tree) and report the issues.
