@@ -149,7 +149,7 @@
           renderContent: function(h, data) {
             return data.label
           },
-          onExpand: function(data) {
+          onExpand: function(e, data) {
             if ('expand' in data) {
               data.expand = !data.expand
 
