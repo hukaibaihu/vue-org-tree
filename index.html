@@ -30,6 +30,9 @@
     .bg-tomato {
       background-color: tomato;
     }
+    .clickable-node {
+      cursor: pointer;
+    }
     </style>
   </head>
   <body>
@@ -91,6 +94,8 @@
             :collapsable="collapsable"
             :label-class-name="labelClassName"
             :render-content="renderContent"
+            selected-class-name="bg-tomato"
+            selected-key="selectedKey"
             @on-expand="onExpand"
             @on-node-click="onNodeClick"
           />
@@ -140,12 +145,14 @@
               label: 'HR人事'
             }]
           },
-          horizontal: false,
-          collapsable: true,
           expandAll: false,
-          labelClassName: 'bg-white'
+          horizontal: false,
+          collapsable: true
         },
         methods: {
+          labelClassName: function(data) {
+            return 'clickable-node'
+          },
           renderContent: function(h, data) {
             return data.label
           },
@@ -161,7 +168,8 @@
             }
           },
           onNodeClick: function(e, data) {
-            alert(data.label)
+            console.log('onNodeClick: %o', data)
+            this.$set(data, 'selectedKey', !data.selectedKey)
           },
           collapse: function(list) {
             var _this = this
