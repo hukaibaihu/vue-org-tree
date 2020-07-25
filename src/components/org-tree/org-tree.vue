@@ -9,6 +9,8 @@
         :collapsable="collapsable"
         :render-content="renderContent"
         :label-class-name="labelClassName"
+        :selected-class-name="selectedClassName"
+        :selected-key="selectedKey"
         @on-expand="(e, data) => $emit('on-expand', e, data)"
         @on-node-focus="(e, data) => $emit('on-node-focus', e, data)"
         @on-node-click="(e, data) => $emit('on-node-click', e, data)"
