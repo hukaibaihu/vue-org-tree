@@ -43,13 +43,17 @@
       el: '#app',
       data: () => ({
         tree: {
-          label: 'Owner',
+          email: 'Owner',
+          name: 'Name',
+          id: '1',
           children: [{
-            label: 'Label 1'
+            email: 'Label 2',
+            name: 'Name 2',
+            id: '2'
           },{
-            label: 'Label 2'
-          },{
-            label: 'Label 3'
+            email: 'Label 3',
+            name: 'Name 3',
+            id: '3'
           }]
         }
       }),
@@ -58,7 +62,7 @@
           return "bg_node";
         },
         renderContent (h, data) {
-          return data.label;
+          return data.email;
         },
         onExpand (e, data) {
           if ('expand' in data) {

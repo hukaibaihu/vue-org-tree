@@ -69,7 +69,9 @@ export function renderBtn (h, data, { props, listeners }) {
 // 创建 label 节点
 export function renderLabel (h, data, context) {
   const { props, listeners } = context
-  const label = data[props.props.label]
+  const email = data[props.props.email]
+  const name = data[props.props.name]
+  const id = data[props.props.id]
   const renderContent = props.renderContent
 
   // event handlers
@@ -78,12 +80,17 @@ export function renderLabel (h, data, context) {
   const mouseOverHandler = listeners[EVENTS.MOUSEOVER]
 
   const childNodes = []
+  const childNodes2 = []
+  const childNodes3 = []
+
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(vnode)
+    vnode && childNodes.push(email) && childNodes2.push(name) && childNodes3.push(id)
   } else {
-    childNodes.push(label)
+    childNodes.push(email)
+    childNodes2.push(name)
+    childNodes3.push(id)
   }
 
   if (props.collapsable && !isLeaf(data, props.props.children)) {
@@ -124,7 +131,21 @@ export function renderLabel (h, data, context) {
       'mouseout': createListener(mouseOutHandler, data),
       'mouseover': createListener(mouseOverHandler, data)
     }
-  }, childNodes)])
+  }, [h('div', {
+    domProps: {
+      className: 'user__email'
+    },
+  }, childNodes),
+    h('div', {
+      domProps: {
+        className: 'user__name'
+      },
+    }, childNodes2),
+    h('div', {
+      domProps: {
+        className: 'user__id'
+      },
+    }, childNodes3)])])
 }
 
 // 创建 node 子节点

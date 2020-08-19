@@ -40,7 +40,9 @@ export default {
     props: {
       type: Object,
       default: () => ({
-        label: 'label',
+        email: 'email',
+        name: 'name',
+        id: 'id',
         expand: 'expand',
         children: 'children'
       })
