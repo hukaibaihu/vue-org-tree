@@ -69,8 +69,8 @@ export function renderBtn (h, data, { props, listeners }) {
 // 创建 label 节点
 export function renderLabel (h, data, context) {
   const { props, listeners } = context
-  const email = data[props.props.email] || 'Не активирован'
-  const first_name = data[props.props.first_name]
+  const email = data[props.props.email]
+  const first_name = data[props.props.first_name] || 'Не активирован'
   const last_name = data[props.props.last_name]
   const tree_id = data[props.props.tree_id]
   const parent_id = data[props.props.parent_id]
