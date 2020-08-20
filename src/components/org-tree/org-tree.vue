@@ -45,6 +45,7 @@ export default {
         last_name: 'last_name',
         tree_id: 'tree_id',
         parent_id: 'parent_id',
+        is_active: 'is_active',
         expand: 'expand',
         children: 'children'
       })
