@@ -72,7 +72,8 @@ export function renderLabel (h, data, context) {
   const email = data[props.props.email]
   const first_name = data[props.props.first_name]
   const last_name = data[props.props.last_name]
-  const id = data[props.props.id]
+  const tree_id = data[props.props.tree_id]
+  const parent_id = data[props.props.parent_id]
   const renderContent = props.renderContent
 
   // event handlers
@@ -84,16 +85,18 @@ export function renderLabel (h, data, context) {
   const childNodes2 = []
   const childNodes3 = []
   const childNodes4 = []
+  const childNodes5 = []
 
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(id)
+    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id)
   } else {
     childNodes.push(email)
     childNodes2.push(first_name)
     childNodes3.push(last_name)
-    childNodes4.push(id)
+    childNodes4.push(tree_id)
+    childNodes5.push(parent_id)
   }
 
   if (props.collapsable && !isLeaf(data, props.props.children)) {

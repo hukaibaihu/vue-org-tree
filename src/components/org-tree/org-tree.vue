@@ -43,7 +43,8 @@ export default {
         email: 'email',
         first_name: 'first_name',
         last_name: 'last_name',
-        id: 'id',
+        tree_id: 'tree_id',
+        parent_id: 'parent_id',
         expand: 'expand',
         children: 'children'
       })
