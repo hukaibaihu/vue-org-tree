@@ -92,7 +92,7 @@ export function renderLabel (h, data, context) {
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(parent_id)
+    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active)
   } else {
     childNodes.push(email)
     childNodes2.push(first_name)
