@@ -41,7 +41,8 @@ export default {
       type: Object,
       default: () => ({
         email: 'email',
-        name: 'name',
+        first_name: 'first_name',
+        last_name: 'last_name',
         id: 'id',
         expand: 'expand',
         children: 'children'

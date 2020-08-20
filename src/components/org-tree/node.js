@@ -70,7 +70,8 @@ export function renderBtn (h, data, { props, listeners }) {
 export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
-  const name = data[props.props.name]
+  const first_name = data[props.props.first_name]
+  const last_name = data[props.props.last_name]
   const id = data[props.props.id]
   const renderContent = props.renderContent
 
@@ -82,15 +83,17 @@ export function renderLabel (h, data, context) {
   const childNodes = []
   const childNodes2 = []
   const childNodes3 = []
+  const childNodes4 = []
 
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes2.push(name) && childNodes3.push(id)
+    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(id)
   } else {
     childNodes.push(email)
-    childNodes2.push(name)
-    childNodes3.push(id)
+    childNodes2.push(first_name)
+    childNodes3.push(last_name)
+    childNodes4.push(id)
   }
 
   if (props.collapsable && !isLeaf(data, props.props.children)) {
@@ -138,14 +141,19 @@ export function renderLabel (h, data, context) {
   }, childNodes),
     h('div', {
       domProps: {
-        className: 'user__name'
+        className: 'user__first-name'
       },
     }, childNodes2),
     h('div', {
       domProps: {
+        className: 'user__last-name'
+      },
+    }, childNodes3),
+    h('div', {
+      domProps: {
         className: 'user__id'
       },
-    }, childNodes3)])])
+    }, childNodes4)])])
 }
 
 // 创建 node 子节点
