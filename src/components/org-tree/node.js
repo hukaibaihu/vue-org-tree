@@ -70,6 +70,7 @@ export function renderBtn (h, data, { props, listeners }) {
 export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
+  const old_email = data[props.props.old_email]
   const is_active = data[props.props.email] ? undefined : 'Не активирован'
   const is_banned = data[props.props.is_banned] ? 'Забанен' : undefined
   const first_name = data[props.props.first_name]
@@ -90,13 +91,15 @@ export function renderLabel (h, data, context) {
   const childNodes5 = []
   const childNodes6 = []
   const childNodes7 = []
+  const childNodes8 = []
 
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active) && childNodes7.push(is_banned)
+    vnode && childNodes.push(email) && childNodes8.push(old_email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active) && childNodes7.push(is_banned)
   } else {
     childNodes.push(email)
+    childNodes8.push(old_email)
     childNodes2.push(first_name)
     childNodes3.push(last_name)
     childNodes4.push(tree_id)
@@ -152,7 +155,12 @@ export function renderLabel (h, data, context) {
     domProps: {
       className: 'user__email'
     },
-  }, childNodes),
+    }, childNodes),
+    h('div', {
+      domProps: {
+        className: 'user__email'
+      },
+    }, childNodes8),
     h('div', {
       domProps: {
         className: 'user__first-name'

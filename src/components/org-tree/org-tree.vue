@@ -41,6 +41,7 @@ export default {
       type: Object,
       default: () => ({
         email: 'email',
+        old_email: 'old_email',
         first_name: 'first_name',
         last_name: 'last_name',
         tree_id: 'tree_id',
