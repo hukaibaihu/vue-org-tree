@@ -46,6 +46,7 @@ export default {
         tree_id: 'tree_id',
         parent_id: 'parent_id',
         is_active: 'is_active',
+        is_banned: 'is_banned',
         expand: 'expand',
         children: 'children'
       })

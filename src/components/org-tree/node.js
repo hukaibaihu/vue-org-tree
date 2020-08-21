@@ -71,6 +71,7 @@ export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
   const is_active = data[props.props.email] ? undefined : 'Не активирован'
+  const is_banned = data[props.props.is_banned] ? 'Заблокирован' : undefined
   const first_name = data[props.props.first_name]
   const last_name = data[props.props.last_name]
   const tree_id = data[props.props.tree_id]
@@ -88,11 +89,12 @@ export function renderLabel (h, data, context) {
   const childNodes4 = []
   const childNodes5 = []
   const childNodes6 = []
+  const childNodes7 = []
 
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active)
+    vnode && childNodes.push(email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active) && childNodes7.push(is_banned)
   } else {
     childNodes.push(email)
     childNodes2.push(first_name)
@@ -100,6 +102,7 @@ export function renderLabel (h, data, context) {
     childNodes4.push(tree_id)
     childNodes5.push(parent_id)
     childNodes6.push(is_active)
+    childNodes7.push(is_banned)
   }
 
   if (props.collapsable && !isLeaf(data, props.props.children)) {
@@ -142,6 +145,11 @@ export function renderLabel (h, data, context) {
     }
   }, [h('div', {
     domProps: {
+      className: 'user__is-active'
+    },
+  }, childNodes6),
+    h('div', {
+    domProps: {
       className: 'user__email'
     },
   }, childNodes),
@@ -162,9 +170,9 @@ export function renderLabel (h, data, context) {
     }, childNodes4),
     h('div', {
       domProps: {
-        className: 'user__is-active'
+        className: 'user__is-banned'
       },
-    }, childNodes6)])])
+    }, childNodes7)])])
 }
 
 // 创建 node 子节点
