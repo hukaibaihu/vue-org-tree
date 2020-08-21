@@ -70,7 +70,7 @@ export function renderBtn (h, data, { props, listeners }) {
 export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
-  const old_email = data[props.props.old_email]
+  const old_email = data[props.props.email] ? undefined : data[props.props.old_email]
   const is_active = data[props.props.email] ? undefined : 'Не активирован'
   const is_banned = data[props.props.is_banned] ? 'Забанен' : undefined
   const first_name = data[props.props.first_name]
