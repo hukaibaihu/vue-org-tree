@@ -43,6 +43,7 @@
       el: '#app',
       data: () => ({
         tree: {
+          node_id: '1',
           email: 'Owner',
           old_email: 'Owner',
           first_name: 'Name',
@@ -53,6 +54,7 @@
           is_banned: '1',
           bin_acc_id: '1',
           children: [{
+            node_id: '1',
             email: 'Label 2',
             old_email: 'Label 2',
             first_name: 'Name 2',
@@ -63,7 +65,7 @@
             is_banned: '1',
             bin_acc_id: '1'
           },{
-            email: 'Label 3',
+            node_id: '1',
             old_email: 'Label 3',
             first_name: 'Name 3',
             last_name: 'Name 3',
@@ -71,7 +73,17 @@
             parent_id: '3',
             is_active: '1',
             is_banned: '1',
-            bin_acc_id: '1'
+            bin_acc_id: '1',
+            children: [
+              {
+                tree_id: null,
+                node_id: '1'
+              },
+              {
+                tree_id: null,
+                node_id: '1'
+              }
+            ]
           }]
         }
       }),
@@ -80,7 +92,7 @@
           return "bg_node";
         },
         renderContent (h, data) {
-          return data.tree_id;
+          return data.node_id;
         },
         onExpand (e, data) {
           if ('expand' in data) {

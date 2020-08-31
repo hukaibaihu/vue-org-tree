@@ -40,6 +40,7 @@ export default {
     props: {
       type: Object,
       default: () => ({
+        node_id: 'node_id',
         email: 'email',
         old_email: 'old_email',
         first_name: 'first_name',

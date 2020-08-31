@@ -71,13 +71,14 @@ export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
   const old_email = data[props.props.email] ? undefined : data[props.props.old_email]
-  const is_active = data[props.props.email] ? undefined : 'Не активирован'
+  const is_active = !data[props.props.email] && data[props.props.tree_id] ? 'Не активирован' : undefined
   const is_banned = data[props.props.is_banned] ? 'Забанен' : undefined
   const first_name = data[props.props.first_name]
   const last_name = data[props.props.last_name]
   const tree_id = data[props.props.tree_id]
   const parent_id = data[props.props.parent_id]
   const bin_acc_id = data[props.props.bin_acc_id]
+  const node_id = data[props.props.tree_id] === null ? 'Нет ребенка' : undefined
   const renderContent = props.renderContent
 
   // event handlers
@@ -94,11 +95,21 @@ export function renderLabel (h, data, context) {
   const childNodes7 = []
   const childNodes8 = []
   const childNodes9 = []
+  const childNodes10 = []
 
   if (typeof renderContent === 'function') {
     let vnode = renderContent(h, data)
 
-    vnode && childNodes.push(email) && childNodes8.push(old_email) && childNodes2.push(first_name) && childNodes3.push(last_name) && childNodes4.push(tree_id) && childNodes5.push(parent_id) && childNodes6.push(is_active) && childNodes7.push(is_banned) && childNodes9.push(bin_acc_id)
+    vnode && childNodes.push(email)
+      && childNodes8.push(old_email)
+      && childNodes2.push(first_name)
+      && childNodes3.push(last_name)
+      && childNodes4.push(tree_id)
+      && childNodes5.push(parent_id)
+      && childNodes6.push(is_active)
+      && childNodes7.push(is_banned)
+      && childNodes9.push(bin_acc_id)
+      && childNodes10.push(node_id)
   } else {
     childNodes.push(email)
     childNodes8.push(old_email)
@@ -109,6 +120,7 @@ export function renderLabel (h, data, context) {
     childNodes6.push(is_active)
     childNodes7.push(is_banned)
     childNodes9.push(bin_acc_id)
+    childNodes10.push(node_id)
   }
 
   if (props.collapsable && !isLeaf(data, props.props.children)) {
@@ -188,7 +200,12 @@ export function renderLabel (h, data, context) {
       domProps: {
         className: 'user__bin-acc-id'
       },
-    }, childNodes9)])])
+    }, childNodes9),
+    h('div', {
+      domProps: {
+        className: 'user__empty'
+      },
+    }, childNodes10)])])
 }
 
 // 创建 node 子节点
