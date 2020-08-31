@@ -49,6 +49,7 @@ export default {
         is_active: 'is_active',
         is_banned: 'is_banned',
         bin_acc_id: 'bin_acc_id',
+        empty: 'empty',
         expand: 'expand',
         children: 'children'
       })
