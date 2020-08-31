@@ -71,7 +71,7 @@ export function renderLabel (h, data, context) {
   const { props, listeners } = context
   const email = data[props.props.email]
   const old_email = data[props.props.email] ? undefined : data[props.props.old_email]
-  const is_active = !data[props.props.email] && data[props.props.tree_id] ? 'Не активирован' : undefined
+  const is_active = !data[props.props.email] && data[props.props.tree_id] !== null ? 'Не активирован' : undefined
   const is_banned = data[props.props.is_banned] ? 'Забанен' : undefined
   const first_name = data[props.props.first_name]
   const last_name = data[props.props.last_name]
