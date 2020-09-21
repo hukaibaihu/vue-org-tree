@@ -1,10 +1,13 @@
 const EVENTS = {
   CLICK: 'on-node-click',
   MOUSEOUT: 'on-node-mouseout',
-  MOUSEOVER: 'on-node-mouseover'
+  MOUSEOVER: 'on-node-mouseover',
+  DRAGSTART: 'on-node-drag-start',
+  DRAGOVER: 'on-node-drag-over',
+  DROP: 'on-node-drop'
 }
 
-function createListener (handler, data) {
+function createListener(handler, data) {
   if (typeof handler === 'function') {
     return function (e) {
       // fixed bug #48
@@ -21,7 +24,7 @@ const isLeaf = (data, prop) => {
 }
 
 // 创建 node 节点
-export function renderNode (h, data, context) {
+export function renderNode(h, data, context) {
   const { props } = context
   const cls = ['org-tree-node']
   const childNodes = []
@@ -47,7 +50,7 @@ export function renderNode (h, data, context) {
 }
 
 // 创建展开折叠按钮
-export function renderBtn (h, data, { props, listeners }) {
+export function renderBtn(h, data, { props, listeners }) {
   const expandHandler = listeners['on-expand']
 
   let cls = ['org-tree-node-btn']
@@ -61,13 +64,13 @@ export function renderBtn (h, data, { props, listeners }) {
       className: cls.join(' ')
     },
     on: {
-      click: e => expandHandler && expandHandler(e,data)
+      click: e => expandHandler && expandHandler(e, data)
     }
   })
 }
 
 // 创建 label 节点
-export function renderLabel (h, data, context) {
+export function renderLabel(h, data, context) {
   const { props, listeners } = context
   const label = data[props.props.label]
   const renderContent = props.renderContent
@@ -76,6 +79,9 @@ export function renderLabel (h, data, context) {
   const clickHandler = listeners[EVENTS.CLICK]
   const mouseOutHandler = listeners[EVENTS.MOUSEOUT]
   const mouseOverHandler = listeners[EVENTS.MOUSEOVER]
+  const dragStartHandler = listeners[EVENTS.DRAGSTART];
+  const dragOverHandler = listeners[EVENTS.DRAGOVER];
+  const dropHander = listeners[EVENTS.DROP];
 
   const childNodes = []
   if (typeof renderContent === 'function') {
@@ -112,7 +118,13 @@ export function renderLabel (h, data, context) {
 
   return h('div', {
     domProps: {
-      className: 'org-tree-node-label'
+      className: 'org-tree-node-label',
+      draggable: true,
+    },
+    on: {
+      'dragstart': createListener(dragStartHandler, data),
+      'dragover': createListener(dragOverHandler, data),
+      'drop': createListener(dropHander, data)
     }
   }, [h('div', {
     domProps: {
@@ -122,13 +134,13 @@ export function renderLabel (h, data, context) {
     on: {
       'click': createListener(clickHandler, data),
       'mouseout': createListener(mouseOutHandler, data),
-      'mouseover': createListener(mouseOverHandler, data)
+      'mouseover': createListener(mouseOverHandler, data),
     }
   }, childNodes)])
 }
 
 // 创建 node 子节点
-export function renderChildren (h, list, context) {
+export function renderChildren(h, list, context) {
   if (Array.isArray(list) && list.length) {
     const children = list.map(item => {
       return renderNode(h, item, context)
@@ -143,8 +155,8 @@ export function renderChildren (h, list, context) {
   return ''
 }
 
-export function render (h, context) {
-  const {props} = context
+export function render(h, context) {
+  const { props } = context
 
   return renderNode(h, props.data, context)
 }
