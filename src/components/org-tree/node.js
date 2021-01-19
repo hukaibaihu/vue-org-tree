@@ -5,13 +5,13 @@ const EVENTS = {
 }
 
 function createListener (handler, data) {
-  const execute = (cb, ...args) => {
+  const execute = (cb, e, ...args) => {
     if (typeof cb === 'function') {
       // fixed bug #48, #73
       const className = e.target && e.target.className
       if (typeof className === 'string' && className.indexOf('org-tree-node-btn') > -1) return
 
-      cb.apply(null, args)
+      cb.apply(null, [e, ...args])
     }
   }
 
@@ -72,7 +72,7 @@ export function renderBtn (h, data, { props, listeners }) {
       className: cls.join(' ')
     },
     on: {
-      click: createListener(expandHandler, data)
+      click: (e) => expandHandler && expandHandler(e, data)
     }
   })
 }

@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>OrgTree Example</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <script src="dist/index.js"></script>
+    <link rel="stylesheet" href="./dist/style.css">
 
     <style>
-      @import "dist/style.css";
       .selected-node {
         background: tomato;
       }
@@ -38,6 +35,10 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script src="dist/index.js"></script>
+
   <script>
     new Vue({
       el: '#app',
@@ -61,6 +62,7 @@
           return data.label;
         },
         onExpand (e, data) {
+          console.log('on-expand', e, data);
           if ('expand' in data) {
             data.expand = !data.expand
             if (!data.expand && data.children) {
@@ -80,14 +82,14 @@
           })
         },
         onNodeClick (e, data) {
-          console.log('CLICK', e);
+          console.log('CLICK', e, data);
           this.$set(data, 'selectedKey', !data['selectedKey']);
         },
         onNodeMouseOver(e, data) {
-          console.log('MOUSE OVER', e);
+          console.log('MOUSE OVER', e, data);
         },
         onNodeMouseOut(e, data) {
-          console.log('MOUSE OUT', e);
+          console.log('MOUSE OUT', e, data);
         }
       }
     })
