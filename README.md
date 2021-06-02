@@ -104,4 +104,4 @@ It is called when the mouse leaves the label.
 > IE9+、Chrome、Firefox、Opera
 
 ## License
-[MIT](http://opensource.org/licenses/MIT)
+[MIT](./LICENSE)
