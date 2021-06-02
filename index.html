@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>OrgTree Example</title>
 
-    <link rel="stylesheet" href="./dist/style.css">
+<head>
+  <meta charset="UTF-8">
+  <title>OrgTree Example</title>
 
-    <style>
-      .selected-node {
-        background: tomato;
-      }
-      .bg_node {
-        cursor: pointer;
-      }
-    </style>
-  </head>
+  <style>
+    @import "dist/style.css";
+
+    .selected-node {
+      background: tomato;
+    }
+
+    .bg_node {
+      cursor: pointer;
+    }
+  </style>
+</head>
 <body>
   <div id="app">
     <div>
-      <vue2-org-tree
-        :data="tree"
-        collapsable
-        :label-width="90"
-        :label-class-name="labelClass"
-        :render-content="renderContent"
-        @on-expand="onExpand"
-        @on-node-click="onNodeClick"
-        @on-node-mouseover="onNodeMouseOver"
-        @on-node-mouseout="onNodeMouseOut"
-        selected-class-name="selected-node"
-        selected-key="selectedKey"
-      />
+      <vue2-org-tree :data="tree" collapsable :label-width="90" :label-class-name="labelClass"
+        :render-content="renderContent" @on-expand="onExpand" @on-node-click="onNodeClick"
+        @on-node-mouseover="onNodeMouseOver" @on-node-mouseout="onNodeMouseOut" @on-node-drop="onNodeDrop"
+        selected-class-name="selected-node" selected-key="selectedKey" />
     </div>
-
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -47,22 +39,21 @@
           label: 'Owner',
           children: [{
             label: 'Label 1'
-          },{
+          }, {
             label: 'Label 2'
-          },{
+          }, {
             label: 'Label 3'
           }]
         }
       }),
       methods: {
-        labelClass (data) {
+        labelClass(data) {
           return "bg_node";
         },
-        renderContent (h, data) {
+        renderContent(h, data) {
           return data.label;
         },
-        onExpand (e, data) {
-          console.log('on-expand', e, data);
+        onExpand(e, data) {
           if ('expand' in data) {
             data.expand = !data.expand
             if (!data.expand && data.children) {
@@ -72,7 +63,7 @@
             this.$set(data, 'expand', true)
           }
         },
-        collapse (nodes) {
+        collapse(nodes) {
           nodes.forEach(node => {
             if (node.expand) {
               node.expand = false
@@ -81,18 +72,24 @@
             node.children && this.collapse(node.children)
           })
         },
-        onNodeClick (e, data) {
-          console.log('CLICK', e, data);
+        onNodeClick(e, data) {
+          console.log('CLICK', e);
           this.$set(data, 'selectedKey', !data['selectedKey']);
         },
         onNodeMouseOver(e, data) {
           console.log('MOUSE OVER', e, data);
         },
         onNodeMouseOut(e, data) {
-          console.log('MOUSE OUT', e, data);
+          console.log('MOUSE OUT', e);
+        },
+        onNodeDrop(e, drag, drop) {
+          console.log('DROP', e);
+          console.log('drag:', drag);
+          console.log('drop:', drop);
         }
       }
     })
   </script>
 </body>
+
 </html>
