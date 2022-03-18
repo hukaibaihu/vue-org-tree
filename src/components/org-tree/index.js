@@ -1,4 +1,4 @@
-import OrgTree from './org-tree'
+import OrgTree from './org-tree.vue'
 
 export function install (Vue) {
   if (install.installed) {
